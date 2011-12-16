@@ -73,11 +73,9 @@ module Rack::Less
           compiled_css
         end
 
-        if cache? && (!File.exists?(cf = File.join(@cache, "#{@css_resource}.css")) || update_cache?)
+        if cache? && (cf = File.join(@cache, "#{@css_resource}.css"))
           FileUtils.mkdir_p(File.dirname(cf))
-          File.open(cf, "w") do |file|
-            file.write(compiled_css)
-          end
+          File.open(cf, "w") { |file| file.write(compiled_css) }
         end
 
         compiled_css

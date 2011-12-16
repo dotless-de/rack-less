@@ -144,8 +144,7 @@ module Rack::Less
 
       Rack::Less::Source.new('normal', {
         :folder => @source_folder,
-        :cache => @cache,
-        :update_cache => true
+        :cache => @cache
       }).to_css
       @updated_cached_file_time = File.mtime(@cached_file)
     end
